@@ -53,7 +53,7 @@ function App() {
       name: "margherita",
       image: "./assets/margherita.jpg",
       price: 150,
-      soldOut:true
+      soldOut:false
     },
     {
       name: "prosciutto",

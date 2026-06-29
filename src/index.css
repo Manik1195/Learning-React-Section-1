@@ -189,7 +189,7 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: auto;
-  width: 700px;
+  width: 850px;
   margin-top: 20px;
   box-shadow: 0px 0px 10px #c7c5c5;
   padding: 30px;
@@ -224,7 +224,8 @@ code {
 }
 .name {
   background-color: #dbe30a;
-  padding: 5px 10px;
+  padding:0 10px;
+  width:150px;
   border-radius: 10px;
 }
 
