@@ -5,33 +5,56 @@ import "./index.css";
 import { Users } from "./users";
 import { Shop } from "./shop";
 import { DatingFront } from "./DatingFront";
+import { Button } from "./Button";
 const planning = ["Learn React🎯", "Learn Node 🥇", "Built Project🏆"];
 
 function App() {
   const [step, setStep] = useState(1);
-  const [isModal,setIsModal]=useState(false)
-  const[isNotClicked,setIsNotClicked]=useState(true)
+  const [isModal, setIsModal] = useState(false);
+  const [isNotClicked, setIsNotClicked] = useState(true);
+  const [count,setCount]=useState(0)
   function handlePrev() {
-    if(step>1)
-    setStep((p) => p - 1);
+    if (step > 1) setStep((p) => p - 1);
   }
   function handleNext() {
-    if(step<planning.length)
-    setStep((p) => p + 1);
+    if (step < planning.length) setStep((p) => p + 1);
   }
-  function handleClose(){
-    setIsModal(false)
-    setIsNotClicked(true)
+  function handleClose() {
+    setIsModal(false);
+    setIsNotClicked(true);
+  }
+  function handleModal() {
+    setIsModal(true);
+    setIsNotClicked(false);
+  }
+  function increment(){
+    setCount(p=>p+1);
 
+    
   }
-  function handleModal(){
-    setIsModal(true)
-    setIsNotClicked(false)
-  }
+
+  const success = {
+    backgroundColor: "green",
+    color: "white",
+    padding: "10px",
+    borderRadius: "10px",
+    border: "none",
+    outline: "none",
+    width: "100px",
+  };
+   const warning = {
+     backgroundColor: "#e7ca09",
+     color: "white",
+     padding: "10px",
+     borderRadius: "10px",
+     border: "none",
+     outline: "none",
+     width: "100px",
+   };
 
   return (
     <>
-    {/* {isNotClicked &&
+      {/* {isNotClicked &&
     <button className="click" onClick={handleModal}>click here</button>
     }
     {isModal && 
@@ -52,10 +75,15 @@ function App() {
     </div>
     }
     <Users/> */}
-    {/* <Shop/> */}
-    <DatingFront/>
-    </>
+      {/* <Shop/> */}
+      <DatingFront/>
+      
     
+      {/* <Button name='Click' className='primary' click={increment} />
+      <p>{count}</p> */}
+      {/* <Button name="Next" variant={success} />
+      <Button name="Prev" variant={warning} /> */}
+    </>
   );
 }
 
