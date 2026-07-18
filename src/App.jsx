@@ -16,6 +16,7 @@ import Accord from "./Accord";
 import { Steps } from "./Steps";
 import { Bill } from "./bill";
 import { FriendList } from "./FriendList";
+import { Pizza } from "./pizza";
 const planning = ["Learn React🎯", "Learn Node 🥇", "Built Project🏆"];
 
 function App() {
@@ -89,9 +90,10 @@ function App() {
       {/* <div className="app">
       <Accord/>
       </div> */}
-      {/* <QA/> */}
-      {/* <Bill/> */}
-      <FriendList/>
+       {/* <QA/> */}
+       {/* <Bill/>  */}
+       <FriendList/> 
+      {/* <Pizza/> */}
 
       {/* <Button name='Click' className='primary' click={increment} />
       <p>{count}</p> */}

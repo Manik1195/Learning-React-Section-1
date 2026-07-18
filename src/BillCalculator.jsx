@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { Button } from "./Button";
 
-export function BillCalculator({ id, friends, billSubmit,handleBill }) {
+export function BillCalculator({ id, friends, billSubmit, handleBill }) {
   const [amount, setAmount] = useState(0);
   const [myExpense, setMyExpense] = useState(0);
   const [friendExpense, setFriendExpense] = useState(0);
   const [billPayBy, setBillPayBy] = useState("");
-  
+
   function handleBillSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     const obj = {
       billAmount: amount,
       yourExpense: myExpense,
       friendExpense: friendExpense,
-      billPayBy: billPayBy===''?'You':billPayBy,
+      billPayBy: billPayBy === "" ? "You" : billPayBy,
       currentId: id,
     };
     console.log(obj);
-    
-   
+
     billSubmit(obj);
-    handleBill(false)
+    handleBill(false);
   }
-  function handleBillClose(){
-    handleBill(false)
+  function handleBillClose() {
+    handleBill(false);
   }
+
   const selectedFriend = friends.find((friend) => friend.id == id);
   return (
     <>
@@ -46,7 +46,11 @@ export function BillCalculator({ id, friends, billSubmit,handleBill }) {
               type="text"
               placeholder="Enter amount"
               value={myExpense}
-              onChange={(e) => setMyExpense(Number(e.target.value))}
+              onChange={(e) => {
+                const yourExpense = Number(e.target.value);
+                setMyExpense(yourExpense);
+                setFriendExpense(amount - yourExpense);
+              }}
             />
           </div>
           <div className="form-items">
@@ -55,7 +59,6 @@ export function BillCalculator({ id, friends, billSubmit,handleBill }) {
               type="text"
               placeholder="Enter amount"
               value={friendExpense}
-              onChange={(e) => setFriendExpense(Number(e.target.value))}
             />
           </div>
           <div className="form-items">
@@ -72,7 +75,9 @@ export function BillCalculator({ id, friends, billSubmit,handleBill }) {
           </div>
           <div className="button-bill">
             <Button className="pay">Pay</Button>
-            <Button className="close-pay" click={handleBillClose}>Close</Button>
+            <Button className="close-pay" click={handleBillClose}>
+              Close
+            </Button>
           </div>
         </form>
       </div>

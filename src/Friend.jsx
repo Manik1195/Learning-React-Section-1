@@ -1,16 +1,32 @@
 import { useState } from "react";
 import { Button } from "./Button";
 
-export function Friend({ friend, handleBill, handlefriendId ,billDetail}) {
-    console.log(billDetail);
-    console.log(friend.id);
-    
+export function Friend({ friend, handleBill, handlefriendId, billDetail }) {
+  console.log(`${friend.id}st friend component renders,${billDetail}`);
+  console.log(`${friend.id}st friend component renders`);
+  console.log(billDetail);
+
   function handleBillOpen(id) {
     handleBill(true);
-    handlefriendId(id)
+    handlefriendId(id);
     console.log(id);
-    
   }
+  let billInfo;
+  if (billDetail.length > 0) {
+    const bills = billDetail.find((bill) => bill.currentId == friend.id);
+    if (bills) {
+      billInfo =
+        bills.billPayBy === "You"? bills.friendExpense === 0?`you and ${friend.name} are even`:`${friend.name} owes you 
+      ₹${bills.friendExpense}`
+      :bills.yourExpense===0?`you and ${friend.name} are even`:
+          `You owes ${friend.name} ${bills.yourExpense}`;
+    } else {
+      billInfo = `You and ${friend.name} are even`;
+    }
+  } else {
+    billInfo = `You and ${friend.name} are even`;
+  }
+
   return (
     <>
       <div className="card-friend">
@@ -21,8 +37,7 @@ export function Friend({ friend, handleBill, handlefriendId ,billDetail}) {
           </div>
 
           <div className="bill-detail">
-            
-              <p>Hi</p>
+            <p> {billInfo}</p>
           </div>
         </div>
         <div>
